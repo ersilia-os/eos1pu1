@@ -1,39 +1,48 @@
-# imports
 import os
-import csv
 import sys
-from rdkit import Chem
-from rdkit.Chem.Descriptors import MolWt
-
-# parse arguments
-input_file = sys.argv[1]
-output_file = sys.argv[2]
-
-# current file directory
-root = os.path.dirname(os.path.abspath(__file__))
-
-# my model
-def my_model(smiles_list):
-    return [MolWt(Chem.MolFromSmiles(smi)) for smi in smiles_list]
+import pandas as pd
+import numpy as np
+import csv
+from functions import load_model, load_data_columns, preprocess_smiles, run_predictions
 
 
-# read SMILES from .csv file, assuming one column with header
-with open(input_file, "r") as f:
-    reader = csv.reader(f)
-    next(reader)  # skip header
-    smiles_list = [r[0] for r in reader]
+if __name__ == '__main__':
+   input_file = sys.argv[1]
+   output_file = sys.argv[2]
 
-# run model
-outputs = my_model(smiles_list)
 
-#check input and output have the same lenght
-input_len = len(smiles_list)
-output_len = len(outputs)
-assert input_len == output_len
+   root = os.path.dirname(os.path.abspath(__file__))
+   checkpoints_dir = os.path.abspath(os.path.join(root, "..", "..", "checkpoints"))
+   model_path = os.path.join(checkpoints_dir, 'FINAL_Physicochemical_model.sav')
+   columns_path = os.path.join(checkpoints_dir, 'data_columns.pkl')
 
-# write output in a .csv file
-with open(output_file, "w") as f:
-    writer = csv.writer(f)
-    writer.writerow(["value"])  # header
-    for o in outputs:
-        writer.writerow([o])
+
+   classifier = load_model(model_path)
+   data_columns = load_data_columns(columns_path)
+
+
+   smiles_list = []
+   with open(input_file, "r") as f:
+       reader = csv.reader(f)
+       next(reader)  # skip header
+       for row in reader:
+           smiles_list.append(row[0])
+   # Error Checking
+   if len(smiles_list) == 0:
+       print("Error: No valid SMILES strings found in the input file.")
+       sys.exit(1)
+   # Run predictions
+   df = preprocess_smiles(smiles_list)
+   probabilities, predictions = run_predictions(classifier, preprocess_smiles(smiles_list), data_columns)
+   input_len = len(smiles_list)
+   output_len = len(probabilities)
+   assert input_len == output_len, "Input and output lengths do not match"
+
+    
+   with open(output_file, "w", newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(["Probability", "Prediction"])  # Header
+        for prob, pred in zip(probabilities, predictions):
+            writer.writerow([prob, pred])
+
+  
