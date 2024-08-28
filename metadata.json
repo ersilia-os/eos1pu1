@@ -1,7 +1,7 @@
 {
     "Identifier": "eos1pu1",
     "Slug": "cardiotox-dictrank",
-    "Status": "In progress",
+    "Status": "Ready",
     "Title": "Cardiotoxicity Classifier",
     "Description": "Prediction of drug-induced cardiotoxicity as a binary classification of cardiotoxicity risk along with a probability score depicting the confidence level of the prediction. Classification is based on the chemical data such as SMILES representations of compounds and a variety of descriptors such as Morgan fingerprints and Mordred physicochemical descriptors that describe the molecular structure of the drug interactions. Biological data is also used including gene expression and cellular paintings after drug interactions. The DICTrank (Drug-Induced Cardiotoxicity Rank) dataset provides the ground truth labels for the training data.",
     "Mode": "Retrained",
