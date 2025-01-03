@@ -1,7 +1,5 @@
 import os
 import sys
-import pandas as pd
-import numpy as np
 import csv
 from functions import load_model, load_data_columns, preprocess_smiles, run_predictions
 
@@ -41,8 +39,10 @@ if __name__ == '__main__':
     
    with open(output_file, "w", newline='') as f:
         writer = csv.writer(f)
-        writer.writerow(["Probability", "Prediction"])  # Header
+        #writer.writerow(["Probability", "Prediction"])  # Header
+        writer.writerow(["cardiotoxicity_risk"])
         for prob, pred in zip(probabilities, predictions):
-            writer.writerow([prob, pred])
+            #writer.writerow([prob, pred])
+            writer.writerow([prob])
 
   
