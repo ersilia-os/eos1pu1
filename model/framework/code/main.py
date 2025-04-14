@@ -36,13 +36,8 @@ if __name__ == '__main__':
    output_len = len(probabilities)
    assert input_len == output_len, "Input and output lengths do not match"
 
-    
    with open(output_file, "w", newline='') as f:
         writer = csv.writer(f)
-        #writer.writerow(["Probability", "Prediction"])  # Header
         writer.writerow(["cardiotoxicity_risk"])
-        for prob, pred in zip(probabilities, predictions):
-            #writer.writerow([prob, pred])
+        for prob in probabilities:
             writer.writerow([prob])
-
-  
