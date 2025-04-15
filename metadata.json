@@ -20,7 +20,6 @@
         "Score"
     ],
     "Output Dimension": 1,
-    "Output Consistency": "Fixed",
     "Interpretation": "The model provides a probability score indicating the likelihood of a compound being cardiotoxic",
     "Tag": [
         "Cardiotoxicity",
