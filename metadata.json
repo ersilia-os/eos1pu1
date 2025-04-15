@@ -3,22 +3,19 @@
     "Slug": "cardiotox-dictrank",
     "Status": "Ready",
     "Title": "Cardiotoxicity Classifier",
-    "Description": "Prediction of drug-induced cardiotoxicity as a binary classification of cardiotoxicity risk. The probability score depicts risk of the compound being cardiotoxic. Classification is based on the chemical data such as SMILES representations of compounds and a variety of descriptors such as Morgan fingerprints and Mordred physicochemical descriptors that describe the molecular structure of the drug interactions. Biological data is also used including gene expression and cellular paintings after drug interactions. The DICTrank (Drug-Induced Cardiotoxicity Rank) dataset provides the ground truth labels for the training data.\n",
+    "Description": "Prediction of drug-induced cardiotoxicity as a binary classification of cardiotoxicity risk. The probability score depicts risk of the compound being cardiotoxic. Classification is based on the chemical data such as SMILES representations of compounds and a variety of descriptors such as Morgan fingerprints and Mordred physicochemical descriptors that describe the molecular structure of the drug interactions. Biological data is also used including gene expression and cellular paintings after drug interactions. The DICTrank (Drug-Induced Cardiotoxicity Rank) dataset provides the ground truth labels for the training data.",
+    "Deployment": [
+        "Local"
+    ],
     "Source": "Local",
     "Source Type": "Replicated",
+    "Task": "Annotation",
+    "Subtask": "Activity prediction",
     "Input": [
         "Compound"
     ],
-    "Input Shape": "Single",
     "Input Dimension": 1,
-    "Task": "Annotation",
-    "Subtask": "Activity prediction",
-    "Biomedical Area": [
-        "ADMET"
-    ],
-    "Target Organism": [
-        "Homo sapiens"
-    ],
+    "Input Shape": "Single",
     "Output": [
         "Score"
     ],
@@ -29,20 +26,25 @@
         "Cardiotoxicity",
         "DrugBank"
     ],
-    "Publication": "https://doi.org/10.1021/acs.jcim.3c01834",
+    "Biomedical Area": [
+        "ADMET"
+    ],
+    "Target Organism": [
+        "Homo sapiens"
+    ],
     "Publication Type": "Peer reviewed",
     "Publication Year": 2024,
+    "Publication": "https://doi.org/10.1021/acs.jcim.3c01834",
     "Source Code": "https://github.com/srijitseal/DICTrank",
     "License": "None",
     "Contributor": "kurysauce",
     "Incorporation Date": "2024-06-29",
+    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos1pu1.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos1pu1",
     "Docker Architecture": [
         "AMD64",
         "ARM64"
     ],
-    "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos1pu1.zip",
-    "Deployment": [
-        "Local"
-    ]
+    "Model Size": 4.0,
+    "Environment Size": 817.0
 }
