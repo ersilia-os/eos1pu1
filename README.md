@@ -41,8 +41,12 @@ Below are the **Output Columns** of the model:
 ### Resource Consumption
 - **Model Size (Mb):** `4`
 - **Environment Size (Mb):** `817`
-- **Image Size (Mb):** `770.41`
+- **Image Size (Mb):** `770.37`
 
+**Computational Performance (seconds):**
+- 10 inputs: `33.71`
+- 100 inputs: `903.36`
+- 10000 inputs: `-1`
 
 ### References
 - **Source Code**: [https://github.com/srijitseal/DICTrank](https://github.com/srijitseal/DICTrank)
