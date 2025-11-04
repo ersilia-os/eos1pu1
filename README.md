@@ -4,6 +4,7 @@ Prediction of drug-induced cardiotoxicity as a binary classification of cardioto
 
 This model was incorporated on 2024-06-29.
 
+
 ## Information
 ### Identifiers
 - **Ersilia Identifier:** `eos1pu1`
