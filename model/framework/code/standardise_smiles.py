@@ -9,18 +9,13 @@ import pandas as pd
 from pandarallel import pandarallel
 pandarallel.initialize(progress_bar=False, verbose=0)
 
-from dimorphite_dl.dimorphite_dl import DimorphiteDL
-from rdkit.Chem import AddHs
-from rdkit.Chem import inchi
+from dimorphite_dl import protonate_smiles
 from rdkit import Chem
 from rdkit.Chem.MolStandardize import rdMolStandardize
-from rdkit.Chem.MolStandardize import Standardizer
 from rdkit.Chem import MolStandardize
 from collections import Counter
 
 def standardize_jumpcp(smiles):
-    standardizer = Standardizer()
-    smiles_original = smiles
 
     # Read SMILES and convert it to RDKit mol object
     mol = Chem.MolFromSmiles(smiles)
@@ -44,24 +39,26 @@ def standardize_jumpcp(smiles):
             uncharger = rdMolStandardize.Uncharger() # annoying, but necessary as no convenience method exists
             
             mol = uncharger.uncharge(mol)# standardize molecules using MolVS and RDKit
-            mol = standardizer.charge_parent(mol)
-            mol = standardizer.isotope_parent(mol)
-            mol = standardizer.stereo_parent(mol)
+            mol = rdMolStandardize.ChargeParent(mol)
+            mol = rdMolStandardize.IsotopeParent(mol)
+            mol = rdMolStandardize.StereoParent(mol)
             
             #Normalize tautomers 
             #Method 1
-            normalizer = MolStandardize.tautomer.TautomerCanonicalizer()
-            mol = normalizer.canonicalize(mol)
-            
+            mol = rdMolStandardize.CanonicalTautomer(mol)
+
             #Method 2
             te = rdMolStandardize.TautomerEnumerator() # idem
             mol = te.Canonicalize(mol)
             
             #Method 3
-            mol = standardizer.tautomer_parent(mol)
-    
+            mol = rdMolStandardize.TautomerParent(mol)
+
             #Final Rules
-            mol = standardizer.standardize(mol)
+            mol_normalizer = rdMolStandardize.Normalizer()
+            mol = mol_normalizer.normalize(mol)
+            mol_reionizer = rdMolStandardize.Reionizer()
+            mol = mol_reionizer.reionize(mol)
             mol_standardized = mol
 
             # convert mol object back to SMILES
@@ -84,14 +81,12 @@ def standardize_jumpcp(smiles):
             # ... and the corresponding mol object
             #mol_standardized = mol_dict[smiles_standardized]
         
-        dimorphite = DimorphiteDL(min_ph=7.4, max_ph=7.4, pka_precision=0)
-        protonated_smiles = dimorphite.protonate(smiles_standardized)
-        
+        protonated_smiles = protonate_smiles(smiles_standardized, ph_min=7.4, ph_max=7.4, precision=0)
         if len(protonated_smiles) > 0:
                 protonated_smile = protonated_smiles[0]
                 
         return protonated_smile 
-    
+        
     except:     
         
         return "Cannot_do"
