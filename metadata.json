@@ -38,6 +38,8 @@
     "License": "None",
     "Contributor": "kurysauce",
     "Incorporation Date": "2024-06-29",
+    "Last Packaging Date": "2025-11-19",
+    "Release": "v1.0.0",
     "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos1pu1.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos1pu1",
     "Docker Architecture": [
@@ -46,11 +48,11 @@
     ],
     "Model Size": 4.0,
     "Environment Size": 799.0,
-    "Image Size": 770.37,
-    "Computational Performance 1": 33.71,
-    "Computational Performance 2": 197.79,
-    "Computational Performance 3": 903.36,
-    "Computational Performance 4": -1.0,
+    "Image Size": 824.05,
+    "Computational Performance 1": 29.28,
+    "Computational Performance 2": 29.67,
+    "Computational Performance 3": 92.76,
+    "Computational Performance 4": 560.7,
     "Computational Performance 5": -1.0,
     "Docker Pack Method": "FastAPI"
 }
