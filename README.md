@@ -34,7 +34,7 @@ Below are the **Output Columns** of the model:
 
 ### Source and Deployment
 - **Source:** `Local`
-- **Source Type:** `Replicated`
+- **Source Type:** `External`
 - **DockerHub**: [https://hub.docker.com/r/ersiliaos/eos1pu1](https://hub.docker.com/r/ersiliaos/eos1pu1)
 - **Docker Architecture:** `AMD64`, `ARM64`
 - **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos1pu1.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos1pu1.zip)
