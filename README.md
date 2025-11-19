@@ -2,8 +2,7 @@
 
 Prediction of drug-induced cardiotoxicity as a binary classification of cardiotoxicity risk. The probability score depicts risk of the compound being cardiotoxic. Classification is based on the chemical data such as SMILES representations of compounds and a variety of descriptors such as Morgan fingerprints and Mordred physicochemical descriptors that describe the molecular structure of the drug interactions. Biological data is also used including gene expression and cellular paintings after drug interactions. The DICTrank (Drug-Induced Cardiotoxicity Rank) dataset provides the ground truth labels for the training data.
 
-This model was incorporated on 2024-06-29.
-
+This model was incorporated on 2024-06-29.Last packaged on 2025-11-19.
 
 ## Information
 ### Identifiers
@@ -42,11 +41,11 @@ Below are the **Output Columns** of the model:
 ### Resource Consumption
 - **Model Size (Mb):** `4`
 - **Environment Size (Mb):** `799`
-- **Image Size (Mb):** `770.37`
+- **Image Size (Mb):** `824.05`
 
 **Computational Performance (seconds):**
-- 10 inputs: `33.71`
-- 100 inputs: `903.36`
+- 10 inputs: `29.28`
+- 100 inputs: `92.76`
 - 10000 inputs: `-1`
 
 ### References
