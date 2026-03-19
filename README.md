@@ -2,7 +2,7 @@
 
 Binary prediction of drug-induced cardiotoxicity risk. The model outputs a probability score indicating how likely a compound is to be cardiotoxic. It uses chemical inputs such as SMILES, Morgan fingerprints, and Mordred physicochemical descriptors, along with biological data including gene expression and cell-painting profiles after drug exposure. Ground-truth labels for training come from the DICTrank (Drug-Induced Cardiotoxicity Rank) dataset.
 
-This model was incorporated on 2024-06-29.Last packaged on 2025-11-19.
+This model was incorporated on 2024-06-29.Last packaged on 2026-03-19.
 
 ## Information
 ### Identifiers
@@ -35,17 +35,17 @@ Below are the **Output Columns** of the model:
 - **Source:** `Local`
 - **Source Type:** `External`
 - **DockerHub**: [https://hub.docker.com/r/ersiliaos/eos1pu1](https://hub.docker.com/r/ersiliaos/eos1pu1)
-- **Docker Architecture:** `AMD64`, `ARM64`
+- **Docker Architecture:** `AMD64`
 - **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos1pu1.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos1pu1.zip)
 
 ### Resource Consumption
 - **Model Size (Mb):** `4`
 - **Environment Size (Mb):** `804`
-- **Image Size (Mb):** `824.05`
+- **Image Size (Mb):** `827.41`
 
 **Computational Performance (seconds):**
-- 10 inputs: `29.28`
-- 100 inputs: `92.76`
+- 10 inputs: `40.78`
+- 100 inputs: `96.18`
 - 10000 inputs: `-1`
 
 ### References
