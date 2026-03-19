@@ -30,21 +30,26 @@ def preprocess_smiles(smiles_list):
 
 def generate_mordred_descriptors(df, data_columns):
    calc = Calculator(descriptors, ignore_3D=True)
-   Ser_Mol = df['Standardized_SMILES'].apply(Chem.MolFromSmiles)
-   Mordred_table = calc.pandas(Ser_Mol).astype('float')
-   Mordred_table = Mordred_table[data_columns]
-   return Mordred_table
+   mols = df['Standardized_SMILES'].apply(Chem.MolFromSmiles)
+   valid = mols.notna()
+   table = pd.DataFrame(float('nan'), index=mols.index, columns=data_columns)
+   if valid.any():
+       table.loc[valid, data_columns] = calc.pandas(mols[valid]).astype('float')[data_columns].values
+   return table, valid
 
 
 def run_predictions(classifier, df, data_columns):
    threshold = 0.641338  # Fixed threshold
-   Mordred_table = generate_mordred_descriptors(df, data_columns)
-   X = np.array(Mordred_table)
-   X[np.isnan(X)] = 0
-   X[np.isinf(X)] = 0
-   prob_test = classifier.predict_proba(X)[:, 1]
-   predictions = (prob_test >= threshold).astype(int)
-   return prob_test, predictions
+   table, valid = generate_mordred_descriptors(df, data_columns)
+   X = np.array(table)
+   probs = np.full(len(X), float('nan'))
+   if valid.any():
+       X_valid = X[valid.values].copy()
+       X_valid[np.isnan(X_valid)] = 0
+       X_valid[np.isinf(X_valid)] = 0
+       probs[valid.values] = classifier.predict_proba(X_valid)[:, 1]
+   preds = np.where(~np.isnan(probs), (probs >= threshold).astype(int), float('nan'))
+   return probs, preds
 
 
 
