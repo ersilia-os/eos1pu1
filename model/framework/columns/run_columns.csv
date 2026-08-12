@@ -1,2 +1,2 @@
 name,type,direction,description
-cardiotoxicity_risk,float,high,Cardiotoxicity risk score (0-1) based on a binary classification model. The recommended threshold by the authors is 0.641338 
+cardiotoxicity_risk,float,high,Cardiotoxicity risk score (0-1) based on a binary classification model. The recommended threshold by the authors is 0.641338
