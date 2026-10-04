@@ -3,7 +3,7 @@
     "Slug": "cardiotox-dictrank",
     "Status": "Ready",
     "Title": "Cardiotoxicity Classifier",
-    "Description": "Binary prediction of drug-induced cardiotoxicity risk. The model outputs a probability score indicating how likely a compound is to be cardiotoxic. It uses chemical inputs such as SMILES, Morgan fingerprints, and Mordred physicochemical descriptors, along with biological data including gene expression and cell-painting profiles after drug exposure. Ground-truth labels for training come from the DICTrank (Drug-Induced Cardiotoxicity Rank) dataset.",
+    "Description": "Flags compounds carrying cardiotoxic risk, drawing on DICTrank, a reference set in which drugs are ranked by their documented potential to cause cardiac injury. Training used those labels to fit a binary classifier, with the authors recommending a decision threshold of 0.641 rather than the usual 0.5. Because the underlying annotations derive from regulatory and clinical documentation of approved drugs, the model reflects observed human outcomes rather than a single mechanistic assay, and coverage is best for chemistry resembling marketed medicines.",
     "Deployment": [
         "Local"
     ],
@@ -20,7 +20,7 @@
     ],
     "Output Dimension": 1,
     "Output Consistency": "Fixed",
-    "Interpretation": "The model provides a probability score indicating the likelihood of a compound being cardiotoxic",
+    "Interpretation": "Probability that a compound is cardiotoxic, with a recommended decision threshold of 0.641.",
     "Tag": [
         "Cardiotoxicity",
         "DrugBank"
