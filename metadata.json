@@ -3,7 +3,7 @@
     "Slug": "cardiotox-dictrank",
     "Status": "Ready",
     "Title": "Cardiotoxicity Classifier",
-    "Description": "Flags compounds carrying cardiotoxic risk, drawing on DICTrank, a reference set in which drugs are ranked by their documented potential to cause cardiac injury. Training used those labels to fit a binary classifier, with the authors recommending a decision threshold of 0.641 rather than the usual 0.5. Because the underlying annotations derive from regulatory and clinical documentation of approved drugs, the model reflects observed human outcomes rather than a single mechanistic assay, and coverage is best for chemistry resembling marketed medicines.",
+    "Description": "Flags compounds carrying cardiotoxic risk using DICTrank, the FDA reference set that ranks approved drugs by their documented potential to cause cardiac injury. Seal and colleagues compared chemical, pharmacokinetic and omics feature spaces; the physicochemical model bundled here runs on Mordred descriptors alone and reached 0.93 average precision. No-concern drugs were labelled negative and less- or most-concern drugs positive, with 0.641 recommended as the decision threshold instead of 0.5. The annotations come from marketed medicines, so coverage is best for similar chemistry.",
     "Deployment": [
         "Local"
     ],
