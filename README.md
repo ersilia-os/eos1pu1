@@ -2,7 +2,8 @@
 
 Flags compounds carrying cardiotoxic risk using DICTrank, the FDA reference set that ranks approved drugs by their documented potential to cause cardiac injury. Seal and colleagues compared chemical, pharmacokinetic and omics feature spaces; the physicochemical model bundled here runs on Mordred descriptors alone and reached 0.93 average precision. No-concern drugs were labelled negative and less- or most-concern drugs positive, with 0.641 recommended as the decision threshold instead of 0.5. The annotations come from marketed medicines, so coverage is best for similar chemistry.
 
-This model was incorporated on 2024-06-29.Last packaged on 2026-03-19.
+This model was incorporated on 2024-06-29.
+Last packaged on 2026-03-19.
 
 ## Information
 ### Identifiers
@@ -28,7 +29,7 @@ This model was incorporated on 2024-06-29.Last packaged on 2026-03-19.
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
 |------|------|-----------|-------------|
-| cardiotoxicity_risk | float | low | Cardiotoxicity risk score (0-1) based on a binary classification model. The recommended threshold by the authors is 0.641338  |
+| cardiotoxicity_risk | float | high | Cardiotoxicity risk score (0-1) based on a binary classification model. The recommended threshold by the authors is 0.641338 |
 
 
 ### Source and Deployment
@@ -37,6 +38,7 @@ Below are the **Output Columns** of the model:
 - **DockerHub**: [https://hub.docker.com/r/ersiliaos/eos1pu1](https://hub.docker.com/r/ersiliaos/eos1pu1)
 - **Docker Architecture:** `AMD64`
 - **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos1pu1.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos1pu1.zip)
+- **Apptainer**: [https://models-sif.s3.eu-north-1.amazonaws.com/eos1pu1_v1.sif](https://models-sif.s3.eu-north-1.amazonaws.com/eos1pu1_v1.sif)
 
 ### Resource Consumption
 - **Model Size (Mb):** `4`
